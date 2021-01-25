@@ -30,12 +30,12 @@ public class LogExceptionTest {
 
     @Test
     public void testLogExceptionShouldBeReturnPreExecuteMessageNoEmptyMessage() throws NoSuchMethodException {
-        LogException annotation = LogExceptionTest.class.getDeclaredMethod("logExceptionWithPreExecuteMessage").getAnnotation(LogException.class);
+        LogException annotation = LogExceptionTest.class.getDeclaredMethod("testLogExceptionWithPreExecuteMessage").getAnnotation(LogException.class);
         Assert.assertEquals("test pre execute message", annotation.preExecuteMessage());
     }
 
     @LogException(preExecuteMessage = "test pre execute message")
-    private void logExceptionWithPreExecuteMessage() {
+    private void testLogExceptionWithPreExecuteMessage() {
         System.out.println("test log exception annotation");
     }
 }
