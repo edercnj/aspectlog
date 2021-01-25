@@ -1,6 +1,7 @@
 package com.br.edercnj.aspectlog.annotations;
 
-import com.br.edercnj.aspectlog.annotation.LogException;
+import com.br.edercnj.aspectlog.annotation.LogExecutionTime;
+import com.br.edercnj.aspectlog.enumeration.LogTimeType;
 import com.br.edercnj.aspectlog.enumeration.LogType;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,33 +10,59 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 
 @RunWith(SpringRunner.class)
-public class LogExceptionTest {
+public class LogExecutionTimeTest {
 
     @Test
-    public void logTypeInLogExceptionShouldBeLogTypeException() throws NoSuchMethodException {
-        LogException annotation = LogExceptionTest.class.getDeclaredMethod("testLogException").getAnnotation(LogException.class);
-        Assert.assertEquals(LogType.EXCEPTION, annotation.logType());
+    public void logTypeInLogExecutionTimeShouldBeLogTypeExecutionTime() throws NoSuchMethodException {
+        LogExecutionTime annotation = LogExecutionTimeTest.class.getDeclaredMethod("logExecutionTimeTest").getAnnotation(LogExecutionTime.class);
+        Assert.assertEquals(LogType.EXECUTION_TIME, annotation.logType());
     }
 
     @Test
-    public void testLogExceptionShouldBeReturnPreExecuteMessageEmpty() throws NoSuchMethodException {
-        LogException annotation = LogExceptionTest.class.getDeclaredMethod("testLogException").getAnnotation(LogException.class);
+    public void testLogInExecutionTimeShouldBeReturnPreExecuteMessageEmpty() throws NoSuchMethodException {
+        LogExecutionTime annotation = LogExecutionTimeTest.class.getDeclaredMethod("logExecutionTimeTest").getAnnotation(LogExecutionTime.class);
         Assert.assertEquals("", annotation.preExecuteMessage());
     }
 
-    @LogException
-    private void testLogException() {
-        System.out.println("test log exception annotation");
+    @LogExecutionTime
+    private void logExecutionTimeTest() {
+        System.out.println("test log Execution Time annotation");
     }
 
     @Test
-    public void testLogExceptionShouldBeReturnPreExecuteMessageNoEmptyMessage() throws NoSuchMethodException {
-        LogException annotation = LogExceptionTest.class.getDeclaredMethod("testLogExceptionWithPreExecuteMessage").getAnnotation(LogException.class);
-        Assert.assertEquals("test pre execute message", annotation.preExecuteMessage());
+    public void testLogInExecutionTimeShouldBeReturnPreExecuteMessageNoEmptyMessage() throws NoSuchMethodException {
+        LogExecutionTime annotation = LogExecutionTimeTest.class.getDeclaredMethod("logExecutionTimeWithPreExecuteMessage").getAnnotation(LogExecutionTime.class);
+        Assert.assertEquals("test pre execute message for LogExecutionTime", annotation.preExecuteMessage());
     }
 
-    @LogException(preExecuteMessage = "test pre execute message")
-    private void testLogExceptionWithPreExecuteMessage() {
-        System.out.println("test log exception annotation");
+    @LogExecutionTime(preExecuteMessage = "test pre execute message for LogExecutionTime")
+    private void logExecutionTimeWithPreExecuteMessage() {
+        System.out.println("test log Execution Time annotation");
+    }
+
+    @Test
+    public void testLogInExecutionTimeShouldBeReturnLogTimeTypeDefaultMilliseconds() throws NoSuchMethodException {
+        LogExecutionTime annotation = LogExecutionTimeTest.class.getDeclaredMethod("logExecutionTimeTest").getAnnotation(LogExecutionTime.class);
+        Assert.assertEquals(LogTimeType.MILLISECONDS, annotation.logTimeType());
+    }
+
+    @Test
+    public void testLogInExecutionTimeShouldBeReturnLogTimeTypeDefaultSeconds() throws NoSuchMethodException {
+        LogExecutionTime annotation = LogExecutionTimeTest.class.getDeclaredMethod("logExecutionTimeTestWithSeconds").getAnnotation(LogExecutionTime.class);
+        Assert.assertEquals(LogTimeType.SECONDS, annotation.logTimeType());
+    }
+    @LogExecutionTime(logTimeType = LogTimeType.SECONDS)
+    private void logExecutionTimeTestWithSeconds() {
+        System.out.println("test log Execution Time annotation with seconds");
+    }
+
+    @Test
+    public void testLogInExecutionTimeShouldBeReturnLogTimeTypeDefaultMinutes() throws NoSuchMethodException {
+        LogExecutionTime annotation = LogExecutionTimeTest.class.getDeclaredMethod("logExecutionTimeTestWithMinutes").getAnnotation(LogExecutionTime.class);
+        Assert.assertEquals(LogTimeType.MINUTES, annotation.logTimeType());
+    }
+    @LogExecutionTime(logTimeType = LogTimeType.MINUTES)
+    private void logExecutionTimeTestWithMinutes() {
+        System.out.println("test log Execution Time annotation with minutes");
     }
 }
