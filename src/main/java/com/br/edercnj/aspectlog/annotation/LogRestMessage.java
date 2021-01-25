@@ -1,6 +1,6 @@
 package com.br.edercnj.aspectlog.annotation;
 
-import com.br.edercnj.aspectlog.enumeration.HttpMethods;
+import com.br.edercnj.aspectlog.enumeration.HttpMethod;
 import com.br.edercnj.aspectlog.enumeration.LogType;
 
 import java.lang.annotation.ElementType;
@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 public @interface LogRestMessage {
 
     LogType logType() default LogType.HTTP_MESSAGE;
-    HttpMethods[] httpMethods() default {HttpMethods.GET, HttpMethods.DELETE, HttpMethods.PUT, HttpMethods.POST, HttpMethods.PATCH};
+    HttpMethod[] httpMethods() default {HttpMethod.GET, HttpMethod.DELETE, HttpMethod.PUT, HttpMethod.POST, HttpMethod.PATCH};
     String preExecuteMessage() default "";
 
 }

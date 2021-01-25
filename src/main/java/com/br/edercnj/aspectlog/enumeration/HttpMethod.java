@@ -1,5 +1,5 @@
 package com.br.edercnj.aspectlog.enumeration;
 
-public enum HttpMethods {
+public enum HttpMethod {
     GET, POST, PUT, PATCH, DELETE
 }
