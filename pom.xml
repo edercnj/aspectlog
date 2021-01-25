@@ -11,8 +11,8 @@
     <groupId>com.br.edercnj</groupId>
     <artifactId>aspectlog</artifactId>
     <version>0.0.0</version>
-    <name>aspectlog</name>
-    <description>Library for log with aspectlog</description>
+    <name>aspect log</name>
+    <description>Library for log with aspect logging</description>
 
     <properties>
         <java.version>11</java.version>
@@ -38,6 +38,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
