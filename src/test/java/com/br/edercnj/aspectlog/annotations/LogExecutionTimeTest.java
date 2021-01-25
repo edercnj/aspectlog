@@ -19,7 +19,7 @@ public class LogExecutionTimeTest {
     }
 
     @Test
-    public void testLogInExecutionTimeShouldBeReturnPreExecuteMessageEmpty() throws NoSuchMethodException {
+    public void logInExecutionTimeShouldBeReturnPreExecuteMessageEmpty() throws NoSuchMethodException {
         LogExecutionTime annotation = LogExecutionTimeTest.class.getDeclaredMethod("logExecutionTimeTest").getAnnotation(LogExecutionTime.class);
         Assert.assertEquals("", annotation.preExecuteMessage());
     }
@@ -30,7 +30,7 @@ public class LogExecutionTimeTest {
     }
 
     @Test
-    public void testLogInExecutionTimeShouldBeReturnPreExecuteMessageNoEmptyMessage() throws NoSuchMethodException {
+    public void logInExecutionTimeShouldBeReturnPreExecuteMessageNoEmptyMessage() throws NoSuchMethodException {
         LogExecutionTime annotation = LogExecutionTimeTest.class.getDeclaredMethod("logExecutionTimeWithPreExecuteMessage").getAnnotation(LogExecutionTime.class);
         Assert.assertEquals("test pre execute message for LogExecutionTime", annotation.preExecuteMessage());
     }
@@ -41,13 +41,13 @@ public class LogExecutionTimeTest {
     }
 
     @Test
-    public void testLogInExecutionTimeShouldBeReturnLogTimeTypeDefaultMilliseconds() throws NoSuchMethodException {
+    public void logInExecutionTimeShouldBeReturnLogTimeTypeDefaultMilliseconds() throws NoSuchMethodException {
         LogExecutionTime annotation = LogExecutionTimeTest.class.getDeclaredMethod("logExecutionTimeTest").getAnnotation(LogExecutionTime.class);
         Assert.assertEquals(LogTimeType.MILLISECONDS, annotation.logTimeType());
     }
 
     @Test
-    public void testLogInExecutionTimeShouldBeReturnLogTimeTypeDefaultSeconds() throws NoSuchMethodException {
+    public void logInExecutionTimeShouldBeReturnLogTimeTypeDefaultSeconds() throws NoSuchMethodException {
         LogExecutionTime annotation = LogExecutionTimeTest.class.getDeclaredMethod("logExecutionTimeTestWithSeconds").getAnnotation(LogExecutionTime.class);
         Assert.assertEquals(LogTimeType.SECONDS, annotation.logTimeType());
     }
@@ -57,7 +57,7 @@ public class LogExecutionTimeTest {
     }
 
     @Test
-    public void testLogInExecutionTimeShouldBeReturnLogTimeTypeDefaultMinutes() throws NoSuchMethodException {
+    public void logInExecutionTimeShouldBeReturnLogTimeTypeDefaultMinutes() throws NoSuchMethodException {
         LogExecutionTime annotation = LogExecutionTimeTest.class.getDeclaredMethod("logExecutionTimeTestWithMinutes").getAnnotation(LogExecutionTime.class);
         Assert.assertEquals(LogTimeType.MINUTES, annotation.logTimeType());
     }
