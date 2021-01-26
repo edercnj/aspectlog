@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 public class LogRestMessageTest {
 
-    public LogRestMessage givenAnnotationClass(String methodName) throws NoSuchMethodException {
+    public LogRestMessage givenAnnotationClass(String methodName) {
         try {
             return LogRestMessageTest.class.getDeclaredMethod(methodName).getAnnotation(LogRestMessage.class);
         } catch (Exception e) {
@@ -22,13 +22,13 @@ public class LogRestMessageTest {
     }
 
     @Test
-    public void logTypeInLogRestMessageShouldBeLogTypeHttpMessage() throws NoSuchMethodException {
+    public void logTypeInLogRestMessageShouldBeLogTypeHttpMessage() {
         LogRestMessage annotation = givenAnnotationClass("logRestMessage");
         Assert.assertEquals(LogType.HTTP_MESSAGE, annotation.logType());
     }
 
     @Test
-    public void logRestMessageShouldBeReturnPreExecuteMessageEmpty() throws NoSuchMethodException {
+    public void logRestMessageShouldBeReturnPreExecuteMessageEmpty() {
         LogRestMessage annotation = givenAnnotationClass("logRestMessage");
         Assert.assertEquals("", annotation.preExecuteMessage());
     }
@@ -39,7 +39,7 @@ public class LogRestMessageTest {
     }
 
     @Test
-    public void logRestMessageShouldBeReturnPreExecuteMessageNoEmptyMessage() throws NoSuchMethodException {
+    public void logRestMessageShouldBeReturnPreExecuteMessageNoEmptyMessage() {
         LogRestMessage annotation = givenAnnotationClass("logRestMessageWithPreExecuteMessage");
         Assert.assertEquals("test pre execute message", annotation.preExecuteMessage());
     }
@@ -50,13 +50,13 @@ public class LogRestMessageTest {
     }
 
     @Test
-    public void logRestMessageShouldBeReturnAllHttpMethods() throws NoSuchMethodException {
+    public void logRestMessageShouldBeReturnAllHttpMethods() {
         LogRestMessage annotation = givenAnnotationClass("logRestMessage");
         Assert.assertArrayEquals(new HttpMethod[]{HttpMethod.GET, HttpMethod.DELETE, HttpMethod.PUT, HttpMethod.POST, HttpMethod.PATCH}, annotation.httpMethods());
     }
 
     @Test
-    public void logRestMessageShouldBeReturnHttpMethodGet() throws NoSuchMethodException {
+    public void logRestMessageShouldBeReturnHttpMethodGet() {
         LogRestMessage annotation = givenAnnotationClass("logRestMessageWithHttpMethodGet");
         Assert.assertArrayEquals(new HttpMethod[]{HttpMethod.GET}, annotation.httpMethods());
     }
@@ -67,7 +67,7 @@ public class LogRestMessageTest {
     }
 
     @Test
-    public void logRestMessageShouldBeReturnHttpMethodPost() throws NoSuchMethodException {
+    public void logRestMessageShouldBeReturnHttpMethodPost() {
         LogRestMessage annotation = givenAnnotationClass("logRestMessageWithHttpMethodPost");
         Assert.assertArrayEquals(new HttpMethod[]{HttpMethod.POST}, annotation.httpMethods());
     }
@@ -78,7 +78,7 @@ public class LogRestMessageTest {
     }
 
     @Test
-    public void logRestMessageShouldBeReturnHttpMethodDelete() throws NoSuchMethodException {
+    public void logRestMessageShouldBeReturnHttpMethodDelete() {
         LogRestMessage annotation = givenAnnotationClass("logRestMessageWithHttpMethodDelete");
         Assert.assertArrayEquals(new HttpMethod[]{HttpMethod.DELETE}, annotation.httpMethods());
     }
@@ -90,7 +90,7 @@ public class LogRestMessageTest {
 
 
     @Test
-    public void logRestMessageShouldBeReturnHttpMethodPut() throws NoSuchMethodException {
+    public void logRestMessageShouldBeReturnHttpMethodPut() {
         LogRestMessage annotation = givenAnnotationClass("logRestMessageWithHttpMethodPut");
         Assert.assertArrayEquals(new HttpMethod[]{HttpMethod.PUT}, annotation.httpMethods());
     }
@@ -101,7 +101,7 @@ public class LogRestMessageTest {
     }
 
     @Test
-    public void ogRestMessageShouldBeReturnHttpMethodPath() throws NoSuchMethodException {
+    public void ogRestMessageShouldBeReturnHttpMethodPath() {
         LogRestMessage annotation = givenAnnotationClass("logRestMessageWithHttpMethodPath");
         Assert.assertArrayEquals(new HttpMethod[]{HttpMethod.PATCH}, annotation.httpMethods());
     }
