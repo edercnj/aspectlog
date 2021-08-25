@@ -13,11 +13,11 @@
     <version>0.0.0</version>
     <name>aspect log</name>
     <description>Library for log with aspect logging</description>
-
     <properties>
+        <sonar.organization>valhalla-project</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <java.version>11</java.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
